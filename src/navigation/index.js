@@ -17,7 +17,7 @@ import {
   createNavigationReducer,
 } from 'react-navigation-redux-helpers';
 import Splash from 'screens/splash-screen';
-import {authRoutes, mainRoutes} from './routes';
+import { mainRoutes} from './routes';
 
 // const AuthStack = createStackNavigator(authRoutes, {
 //   headerMode: 'none',
@@ -36,7 +36,7 @@ const AppNavigator = createSwitchNavigator(
   },
   {
     headerMode: 'none',
-    initialRouteName: 'Splash',
+    initialRouteName: 'Main',
   },
 );
 
@@ -65,7 +65,6 @@ class NavigationApp extends React.Component<TNavigationAppProps> {
 
   render() {
     const {nav, dispatch} = this.props;
-    console.log(nav, 'nav')
     return <AppWithNavigationState state={nav} dispatch={dispatch} />;
   }
 

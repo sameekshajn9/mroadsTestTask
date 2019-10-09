@@ -9,7 +9,7 @@ import {
   SettingsIcon,
   DiningIcon,
 } from 'shared/assets/images';
-// import Settings from 'screens/settings';
+import LoginScreen from 'screens/login';
 import {Colors} from 'shared/theme';
 import Splash from 'screens/splash-screen';
 import {Metrics} from 'utils';
@@ -35,11 +35,11 @@ const tabOptions = (tabScreen, iconName, iconTitle) => {
 };
 
 const tabRoutesConfig = {
-  Order: tabOptions(Splash, BagIcon, 'Order'),
-  Business: tabOptions(Splash, DiningIcon, 'Dine Out'),
-  Redeem: tabOptions(Splash, SearchIcon, 'Search'),
-  Settings: tabOptions(Splash, SettingsIcon, 'Settings'),
-  Menu: tabOptions(Splash, DiningIcon, 'Menu'),
+  Order: tabOptions(LoginScreen, BagIcon, 'Order'),
+  Business: tabOptions(LoginScreen, DiningIcon, 'Dine Out'),
+  Redeem: tabOptions(LoginScreen, SearchIcon, 'Search'),
+  Settings: tabOptions(LoginScreen, SettingsIcon, 'Settings'),
+  Menu: tabOptions(LoginScreen, DiningIcon, 'Menu'),
 };
 
 let bottomTabs = createMaterialBottomTabNavigator(tabRoutesConfig, {
