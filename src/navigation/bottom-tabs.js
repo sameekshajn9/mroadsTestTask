@@ -8,6 +8,7 @@ import {
   SearchIcon,
   SettingsIcon,
   DiningIcon,
+  HeartIcon,
 } from 'shared/assets/images';
 import LoginScreen from 'screens/login';
 import InspirationScreen from 'screens/inspirations';
@@ -41,8 +42,8 @@ const tabRoutesConfig = {
   Order: tabOptions(LoginScreen, BagIcon, 'Home'),
   Business: tabOptions(InspirationScreen, DiningIcon, 'Inspirations'),
   // Redeem: tabOptions(LoginScreen, SearchIcon, 'VR'),
-  Settings: tabOptions(SavedServicesScreen, SettingsIcon, 'Saved'),
-  Menu: tabOptions(SettingsScreen, DiningIcon, 'Settings'),
+  Settings: tabOptions(SavedServicesScreen, HeartIcon, 'Saved'),
+  Menu: tabOptions(SettingsScreen, SettingsIcon, 'Settings'),
 };
 
 let bottomTabs = createMaterialBottomTabNavigator(tabRoutesConfig, {
