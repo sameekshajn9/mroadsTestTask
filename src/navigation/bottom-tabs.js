@@ -10,8 +10,11 @@ import {
   DiningIcon,
 } from 'shared/assets/images';
 import LoginScreen from 'screens/login';
+import InspirationScreen from 'screens/inspirations';
+import SavedServicesScreen from 'screens/saved-services';
+import SettingsScreen from 'screens/settings';
 import {Colors} from 'shared/theme';
-import Splash from 'screens/splash-screen';
+// import Splash from 'screens/splash-screen';
 import {Metrics} from 'utils';
 import styles from './styles';
 
@@ -35,11 +38,11 @@ const tabOptions = (tabScreen, iconName, iconTitle) => {
 };
 
 const tabRoutesConfig = {
-  Order: tabOptions(LoginScreen, BagIcon, 'Order'),
-  Business: tabOptions(LoginScreen, DiningIcon, 'Dine Out'),
-  Redeem: tabOptions(LoginScreen, SearchIcon, 'Search'),
-  Settings: tabOptions(LoginScreen, SettingsIcon, 'Settings'),
-  Menu: tabOptions(LoginScreen, DiningIcon, 'Menu'),
+  Order: tabOptions(LoginScreen, BagIcon, 'Home'),
+  Business: tabOptions(InspirationScreen, DiningIcon, 'Inspirations'),
+  // Redeem: tabOptions(LoginScreen, SearchIcon, 'VR'),
+  Settings: tabOptions(SavedServicesScreen, SettingsIcon, 'Saved'),
+  Menu: tabOptions(SettingsScreen, DiningIcon, 'Settings'),
 };
 
 let bottomTabs = createMaterialBottomTabNavigator(tabRoutesConfig, {
