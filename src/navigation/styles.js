@@ -5,7 +5,6 @@ import {getHeight, getWidth} from 'utils';
 const styles = {
   bottomTabsContainer: {
     alignItems: 'center',
-    backgroundColor: "red"
   },
   bottomTabsImage: {
     height: getHeight(22.7),
