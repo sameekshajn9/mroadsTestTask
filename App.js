@@ -26,38 +26,49 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import appStore from './src/store';
+import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+
 import NavigationApp from './src/navigation';
 import SplashScreen from 'react-native-splash-screen';
 
 const {store, persistor} = appStore();
 
-class App extends React.Component {
+const theme = {
+  ...DefaultTheme,
+  roundness: 2,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#3498db',
+    accent: '#f1c40f',
+  },
+};
 
+class App extends React.Component {
   componentDidMount() {
     SplashScreen.hide();
   }
   render() {
-
     return (
       <>
-        <Provider store={store}>
-          <PersistGate persistor={persistor}>
-            <StatusBar barStyle="dark-content" />
-            <SafeAreaView style={styles.safeAreaView}>
-              <NavigationApp />
-            </SafeAreaView>
-          </PersistGate>
-        </Provider>
+        <PaperProvider>
+          <Provider store={store}>
+            <PersistGate persistor={persistor}>
+              <StatusBar barStyle="dark-content" />
+              <SafeAreaView style={styles.safeAreaView}>
+                <NavigationApp />
+              </SafeAreaView>
+            </PersistGate>
+          </Provider>
+        </PaperProvider>
       </>
     );
   }
 }
 
-
 const styles = StyleSheet.create({
   safeAreaView: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });
 
 export default App;

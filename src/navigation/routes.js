@@ -7,12 +7,12 @@ import SavedServicesScreen from 'screens/saved-services';
 import SettingsScreen from 'screens/settings';
 
 export const authRoutes = {
+  Login: LoginScreen,
   // UserDetails,
 };
 export const mainRoutes = {
   Tab: BottomTabs,
-  Login: LoginScreen,
-  Inspirations: InspirationScreen,
-  SavedServices: SavedServicesScreen,
-  Settings: SettingsScreen,
+  // Inspirations: InspirationScreen,
+  // SavedServices: SavedServicesScreen,
+  // Settings: SettingsScreen,
 };

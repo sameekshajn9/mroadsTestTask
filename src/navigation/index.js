@@ -2,13 +2,8 @@
  * @flow
  * */
 import React from 'react';
-import {
-  createSwitchNavigator,
-  NavigationActions,
-} from 'react-navigation';
-import {
-  createStackNavigator,
-} from 'react-navigation-stack';
+import {createSwitchNavigator, NavigationActions} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
 import {BackHandler} from 'react-native';
 import {connect} from 'react-redux';
 import {
@@ -17,12 +12,12 @@ import {
   createNavigationReducer,
 } from 'react-navigation-redux-helpers';
 import Splash from 'screens/splash-screen';
-import { mainRoutes} from './routes';
+import {mainRoutes, authRoutes} from './routes';
 
-// const AuthStack = createStackNavigator(authRoutes, {
-//   headerMode: 'none',
-//   initialRouteName: 'UserDetails',
-// });
+const AuthStack = createStackNavigator(authRoutes, {
+  headerMode: 'none',
+  initialRouteName: 'Login',
+});
 
 const MainStack = createStackNavigator(mainRoutes, {
   headerMode: 'none',
@@ -31,12 +26,13 @@ const MainStack = createStackNavigator(mainRoutes, {
 
 const AppNavigator = createSwitchNavigator(
   {
+    Auth: AuthStack,
     Main: MainStack,
     Splash: {screen: Splash},
   },
   {
     headerMode: 'none',
-    initialRouteName: 'Main',
+    initialRouteName: 'Auth',
   },
 );
 
