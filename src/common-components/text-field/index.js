@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
     paddingHorizontal: 0,
     paddingRight: 10,
-    backgroundColor: 'lightgrey',
+    backgroundColor: Colors.lightGrey,
     position: 'absolute',
   },
   textInput: {
@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
     height: getHeight(59.96),
     width: getWidth(277),
     paddingTop: 10,
+    marginTop: 10,
     alignSelf: 'center',
   },
 });

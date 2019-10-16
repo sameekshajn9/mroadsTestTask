@@ -11,7 +11,10 @@ export default class LoginScreen extends Component {
     this.state = {
       contact: '',
       isOptSent: false,
+      isVerified: false,
       code: '',
+      name: '',
+      email: '',
     };
   }
 
@@ -31,17 +34,33 @@ export default class LoginScreen extends Component {
   verifyOtp = () => {
     this.setState({
       isOptSent: false,
+      isVerified: true,
     });
+  };
+
+  fillDetails = () => {
     this.props.navigation.navigate('Main');
   };
 
   getTextField = () => {
-    const {isOptSent, contact, code} = this.state;
+    const {isOptSent, contact, code, isVerified, name, email} = this.state;
     const prop = {
       containerStyle: styles.containerStyle,
       onHandleChange: this.onHandleChange,
     };
-    if (!isOptSent) {
+    if (isVerified) {
+      prop.onPressContinue = this.fillDetails;
+      prop.fields = {
+        name: {
+          label: 'Name',
+          value: name,
+        },
+        email: {
+          label: 'Email',
+          value: email,
+        },
+      };
+    } else if (!isOptSent) {
       prop.onPressContinue = this.sendOtp;
       prop.fields = {
         contact: {
@@ -62,12 +81,15 @@ export default class LoginScreen extends Component {
   };
 
   render() {
-    console.log(this.props);
-    const {isOptSent} = this.state;
+    const {isOptSent, isVerified} = this.state;
     const {header, text, button} = ui.auth.login;
     const {text: verifyText} = ui.auth.verify;
     const textFields = this.getTextField();
-    const loginText = isOptSent ? verifyText : text;
+    const loginText = isOptSent
+      ? verifyText
+      : isVerified
+      ? 'Enter Details'
+      : text;
     return (
       <View style={[styles.parentContainer, styles.horizontal]}>
         <Text style={styles.welcomeText}>{header.text}</Text>
@@ -76,7 +98,7 @@ export default class LoginScreen extends Component {
           <Text style={styles.loginText}>{loginText}</Text>
         </View>
         {textFields}
-        {!isOptSent && (
+        {!isOptSent && !isVerified && (
           <View style={styles.skipButtonView}>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('Main')}>
