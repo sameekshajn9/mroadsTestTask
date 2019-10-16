@@ -22,6 +22,7 @@ const TextInputForm = props => {
       {fieldKeys &&
         fieldKeys.map(fieldKey => (
           <FloatingLabelTextInput
+            key={fields[fieldKey].label}
             isFloatingTextInput
             password={false}
             style={[styles.detailsTextInput, detailsTextInputStyle]}

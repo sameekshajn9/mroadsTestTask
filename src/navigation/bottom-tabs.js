@@ -54,7 +54,7 @@ const tabOptions = (tabScreen, iconName, iconTitle, backgroundColor) => {
 };
 
 const tabRoutesConfig = {
-  Order: tabOptions(LoginScreen, BagIcon, 'Home', 'red'),
+  Order: tabOptions(InspirationScreen, BagIcon, 'Home', 'red'),
   Business: tabOptions(InspirationScreen, DiningIcon, 'Inspirations', 'yellow'),
   // Redeem: tabOptions(LoginScreen, SearchIcon, 'VR'),
   Settings: tabOptions(SavedServicesScreen, HeartIcon, 'Saved', 'pink'),

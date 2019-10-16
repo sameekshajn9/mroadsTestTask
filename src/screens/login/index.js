@@ -1,14 +1,17 @@
 // @flow
-import React from 'react';
-import {View, Text} from 'react-native';
+import React, {Component} from 'react';
+import {View, Text, TouchableOpacity} from 'react-native';
 import styles from './styles';
+import ui from '../../shared/constants';
 import TextInputForm from '../../common-components/login-form';
 
-export default class LoginScreen extends React.Component<any, any> {
+export default class LoginScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
       contact: '',
+      isOptSent: false,
+      code: '',
     };
   }
 
@@ -18,33 +21,69 @@ export default class LoginScreen extends React.Component<any, any> {
     });
   };
 
-  onHandlePressContinue = () => {
+  sendOtp = () => {
     console.log(this.state.contact);
+    this.setState({
+      isOptSent: true,
+    });
+  };
+
+  verifyOtp = () => {
+    this.setState({
+      isOptSent: false,
+    });
+    this.props.navigation.navigate('Main');
+  };
+
+  getTextField = () => {
+    const {isOptSent, contact, code} = this.state;
+    const prop = {
+      containerStyle: styles.containerStyle,
+      onHandleChange: this.onHandleChange,
+    };
+    if (!isOptSent) {
+      prop.onPressContinue = this.sendOtp;
+      prop.fields = {
+        contact: {
+          label: 'Contact',
+          value: contact,
+        },
+      };
+    } else {
+      prop.onPressContinue = this.verifyOtp;
+      prop.fields = {
+        code: {
+          label: 'Verify Otp',
+          value: code,
+        },
+      };
+    }
+    return <TextInputForm {...prop} />;
   };
 
   render() {
-    const {contact} = this.state;
+    console.log(this.props);
+    const {isOptSent} = this.state;
+    const {header, text, button} = ui.auth.login;
+    const {text: verifyText} = ui.auth.verify;
+    const textFields = this.getTextField();
+    const loginText = isOptSent ? verifyText : text;
     return (
       <View style={[styles.parentContainer, styles.horizontal]}>
-        <Text style={styles.welcomeText}>Welcome!</Text>
-        <Text style={styles.sloganText}>It Starts With Us</Text>
+        <Text style={styles.welcomeText}>{header.text}</Text>
+        <Text style={styles.sloganText}>{header.sloganText}</Text>
         <View style={styles.loginTextView}>
-          <Text style={styles.loginText}>Log In</Text>
+          <Text style={styles.loginText}>{loginText}</Text>
         </View>
-        <TextInputForm
-          onPressContinue={this.onHandlePressContinue}
-          onHandleChange={this.onHandleChange}
-          containerStyle={styles.containerStyle}
-          fields={{
-            contact: {
-              label: 'Contact',
-              value: contact,
-            },
-          }}
-        />
-        <View style={styles.skipButtonView}>
-          <Text style={styles.skipButtonText}>SKIP</Text>
-        </View>
+        {textFields}
+        {!isOptSent && (
+          <View style={styles.skipButtonView}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('Main')}>
+              <Text style={styles.skipButtonText}>{button.text}</Text>
+            </TouchableOpacity>
+          </View>
+        )}
       </View>
     );
   }
