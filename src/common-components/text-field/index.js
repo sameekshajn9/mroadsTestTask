@@ -1,25 +1,10 @@
 // @flow
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, View, TextInput, Text} from 'react-native';
-import {Colors, Fonts, FontSize} from 'shared/theme';
+import {Colors, FontSize} from 'shared/theme';
 import {getHeight, getWidth} from 'utils';
 
-type TTextInputProps = {
-  style: any,
-  labelStyle: any,
-  textInputStyle: any,
-  label: string,
-  placeholder: string,
-  value: any,
-  password: boolean,
-  onChangeText: (text: any) => void,
-  handleBlur: () => void,
-  handleFocus: () => void,
-  isFloatingTextInput: boolean,
-  isFocused: boolean,
-};
-
-export const FloatingLabelTextInput = (props: TTextInputProps) => {
+export const FloatingLabelTextInput = props => {
   const {
     style,
     labelStyle,
@@ -31,27 +16,15 @@ export const FloatingLabelTextInput = (props: TTextInputProps) => {
     handleFocus,
     isFloatingTextInput,
     placeholder,
-    isFocused,
     password,
     ...otherProps
   } = props;
+  const [isFocused, setFocus] = useState(false);
 
-  let placeHolder = '';
-  if (isFocused) {
-    placeHolder = '';
-  } else {
-    placeHolder = placeholder;
-  }
+  let placeHolder = isFocused ? '' : placeholder;
 
-  let focus = '';
-  let blur = '';
-  if (isFloatingTextInput) {
-    blur = handleBlur;
-    focus = handleFocus;
-  } else {
-    blur = () => {};
-    focus = () => {};
-  }
+  let focus = isFloatingTextInput ? () => setFocus(true) : () => {};
+  let blur = isFloatingTextInput ? () => setFocus(false) : () => {};
 
   return (
     <View style={[styles.Wrapper, style]}>
@@ -74,7 +47,7 @@ export const FloatingLabelTextInput = (props: TTextInputProps) => {
 
 const styles = StyleSheet.create({
   label: {
-    color: Colors.ultramarineBlue,
+    color: Colors.white,
     // fontFamily: Fonts.TTNormsMedium,
     top: -8,
     zIndex: 1,

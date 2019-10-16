@@ -1,31 +1,8 @@
 import {StyleSheet, Platform} from 'react-native';
 import {Metrics, getHeight, getWidth} from 'utils';
-import {Colors, Fonts, FontSize} from 'shared/theme';
+import {Colors, FontSize} from 'shared/theme';
 
 export default StyleSheet.create({
-  container: {
-    height: Metrics.screenHeight,
-    width: Metrics.screenWidth,
-  },
-  cityBackground: {
-    width: Metrics.screenWidth,
-    height: getHeight(280),
-    opacity: 0.08,
-  },
-  scooterImage: {
-    height: getHeight(200.3),
-    width: getWidth(237.3),
-    position: 'absolute',
-    top: getHeight(143),
-    left: getWidth(68),
-  },
-  foodClubLogo: {
-    height: getHeight(61),
-    width: getWidth(173),
-    marginTop: getHeight(88),
-    alignSelf: 'center',
-    marginBottom: getHeight(39),
-  },
   detailsTextInputStyle: {
     height: getHeight(50),
     width: getWidth(277),
@@ -49,9 +26,14 @@ export default StyleSheet.create({
     top: -6,
   },
   loginButton: {
-    height: getHeight(38),
-    width: Metrics.screenWidth * 0.74,
-    marginTop: getHeight(33),
+    alignContent: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 60,
+    width: getHeight(70),
+    height: getHeight(70),
+    borderRadius: getHeight(35),
+    backgroundColor: 'white',
   },
   textButtonStyle: {
     width: Metrics.screenWidth * 0.74,
@@ -64,24 +46,7 @@ export default StyleSheet.create({
   safeAreaView: {
     flex: 1,
   },
-  innerSwitchStyle: {
+  alignItem: {
     alignItems: 'center',
-    borderWidth: 2,
-    borderColor: Colors.lightWhite,
-    justifyContent: 'center',
-  },
-  switchMainView: {
-    width: getWidth(Metrics.screenWidth),
-    flexDirection: 'row',
-    position: 'absolute',
-    bottom: -60,
-    alignItems: 'center',
-    alignSelf: 'center',
-    justifyContent: 'center',
-  },
-  switchServerText: {
-    marginHorizontal: 10,
-    fontSize: 14,
-    color: Colors.lightGrey,
   },
 });

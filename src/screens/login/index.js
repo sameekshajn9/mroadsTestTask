@@ -2,73 +2,48 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import styles from './styles';
-import DetailsTextInput from '../../common-components/login-form';
+import TextInputForm from '../../common-components/login-form';
 
-export default class LoginScreen extends React.PureComponent<any, any> {
+export default class LoginScreen extends React.Component<any, any> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contact: '',
+    };
+  }
+
+  onHandleChange = (key, value) => {
+    this.setState({
+      [key]: value,
+    });
+  };
+
+  onHandlePressContinue = () => {
+    console.log(this.state.contact);
+  };
+
   render() {
+    const {contact} = this.state;
     return (
-      <View style={[styles.viewContainer, styles.horizontal]}>
-        <Text
-          style={{
-            fontSize: 30,
-            marginTop: 20,
-            color: 'white',
-            fontWeight: 'bold',
-          }}>
-          Welcome!
-        </Text>
-        <Text
-          style={{
-            fontSize: 20,
-            marginTop: 10,
-            color: 'white',
-            fontWeight: '500',
-          }}>
-          It Starts With Us
-        </Text>
-        <View
-          style={{
-            marginTop: 150,
-            borderTopWidth: 5,
-            borderStyle: 'solid',
-            borderTopColor: 'white',
-          }}>
-          <Text
-            style={{
-              marginTop: 10,
-              fontSize: 30,
-              color: 'white',
-            }}>
-            Log In
-          </Text>
+      <View style={[styles.parentContainer, styles.horizontal]}>
+        <Text style={styles.welcomeText}>Welcome!</Text>
+        <Text style={styles.sloganText}>It Starts With Us</Text>
+        <View style={styles.loginTextView}>
+          <Text style={styles.loginText}>Log In</Text>
         </View>
-        <DetailsTextInput
-          detailsTextInputStyle={styles.detailsTextInputStyle}
-          textInputStyle={styles.textInputStyle}
-          labelStyle={styles.labelStyle}
-          loginButton={styles.loginButton}
-          textButtonStyle={styles.textButtonStyle}
-          onPressContinue={(name, password) =>
-            this.handleOnPressContinue(name, password)
-          }
-          containerStyle={{
-            marginTop: 50,
+        <TextInputForm
+          onPressContinue={this.onHandlePressContinue}
+          onHandleChange={this.onHandleChange}
+          containerStyle={styles.containerStyle}
+          fields={{
+            contact: {
+              label: 'Contact',
+              value: contact,
+            },
           }}
         />
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'flex-end',
-            flexDirection: 'row',
-            marginBottom: 10,
-          }}>
-          <Text
-            style={{
-              fontSize: 17,
-              color: 'white',
-            }}>
-            SKIP
-          </Text>
+        <View style={styles.skipButtonView}>
+          <Text style={styles.skipButtonText}>SKIP</Text>
         </View>
       </View>
     );
