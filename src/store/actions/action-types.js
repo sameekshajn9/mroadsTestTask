@@ -1,1 +1,2 @@
 export const HANDLE_SIGNIN = 'HANDLE_SIGNIN';
+export const GET_ALL_SERVICES = 'GET_ALL_SERVICES';

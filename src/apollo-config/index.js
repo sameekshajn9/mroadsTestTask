@@ -60,7 +60,7 @@ const bearerLink = setContext((request, previousContext) => {
 
 const httpLink = createHttpLink({
   uri: config.togetherServer,
-  credentials: 'include',
+  // credentials: 'include',
 });
 
 const client = new ApolloClient({

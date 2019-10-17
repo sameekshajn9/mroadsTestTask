@@ -18,7 +18,7 @@ const createUserMutation = gql`
   }
 `;
 
-export const createUser = (params: TUserData) =>
+export const createUser = params =>
   toPromise((resolve, reject) => {
     client
       .mutate({

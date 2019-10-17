@@ -1,6 +1,6 @@
 export default {
   togetherServer: {
-    apiUrl: 'http://localhost:3000',
+    apiUrl: 'https://localhost:3000/graphql',
     // apiUrl: 'http://52.66.240.247',
   },
 };

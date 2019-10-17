@@ -4,8 +4,9 @@ import {all, fork} from 'redux-saga/effects';
 
 // Imports: Redux Sagas
 import {watchAddUser} from 'screens/login/redux/saga';
+import {watchGetServiceTypes} from 'screens/home/redux/saga';
 
 // Redux Saga: Root Saga
 export function* rootSaga() {
-  yield all([fork(watchAddUser)]);
+  yield all([fork(watchAddUser), fork(watchGetServiceTypes)]);
 }

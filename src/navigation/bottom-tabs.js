@@ -11,15 +11,14 @@ import {
 } from 'react-native';
 import {
   BagIcon,
-  SearchIcon,
   SettingsIcon,
   DiningIcon,
   HeartIcon,
 } from 'shared/assets/images';
-import LoginScreen from 'screens/login';
 import InspirationScreen from 'screens/inspirations';
 import SavedServicesScreen from 'screens/saved-services';
 import SettingsScreen from 'screens/settings';
+import HomeScreen from 'screens/home';
 import {Colors} from 'shared/theme';
 // import Splash from 'screens/splash-screen';
 import {Metrics} from 'utils';
@@ -54,7 +53,7 @@ const tabOptions = (tabScreen, iconName, iconTitle, backgroundColor) => {
 };
 
 const tabRoutesConfig = {
-  Order: tabOptions(InspirationScreen, BagIcon, 'Home', 'red'),
+  Order: tabOptions(HomeScreen, BagIcon, 'Home', 'red'),
   Business: tabOptions(InspirationScreen, DiningIcon, 'Inspirations', 'yellow'),
   // Redeem: tabOptions(LoginScreen, SearchIcon, 'VR'),
   Settings: tabOptions(SavedServicesScreen, HeartIcon, 'Saved', 'pink'),
