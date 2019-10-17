@@ -30,6 +30,7 @@
     "appstore": "file:src/store",
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.1",
+    "native-base": "^2.13.8",
     "react": "16.9.0",
     "react-native": "0.61.1",
     "react-native-gesture-handler": "^1.4.1",
