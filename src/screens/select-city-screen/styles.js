@@ -29,4 +29,23 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '300',
   },
+  availabilityView: {
+    width: '100%',
+    backgroundColor: Colors.red,
+    marginVertical: 10,
+    paddingVertical: 10,
+  },
+  availabilityViewText: {
+    fontSize: 20,
+    fontWeight: '500',
+    flexDirection: 'row',
+    alignSelf: 'center',
+    textAlign: 'center',
+    color: Colors.white,
+  },
+  pickerStyle: {
+    width: '100%',
+    flex: 1,
+  },
+  // picker,
 });

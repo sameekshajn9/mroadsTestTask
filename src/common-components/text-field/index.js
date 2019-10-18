@@ -2,6 +2,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, TextInput, Text} from 'react-native';
 import {Colors, FontSize} from 'shared/theme';
+import {Left, Right, Body} from 'native-base';
 import {getHeight, getWidth} from 'utils';
 
 export const FloatingLabelTextInput = props => {
@@ -17,6 +18,9 @@ export const FloatingLabelTextInput = props => {
     isFloatingTextInput,
     placeholder,
     password,
+    left,
+    right,
+    body,
     ...otherProps
   } = props;
   const [isFocused, setFocus] = useState(false);
@@ -30,7 +34,8 @@ export const FloatingLabelTextInput = props => {
     <View style={[styles.Wrapper, style]}>
       <View>
         {isFocused && <Text style={[styles.label, labelStyle]}>{label}</Text>}
-        <TextInput
+        <Left>{left}</Left>
+        {/* <TextInput
           style={[styles.textInput, textInputStyle]}
           secureTextEntry={password}
           value={value}
@@ -39,7 +44,14 @@ export const FloatingLabelTextInput = props => {
           onBlur={blur}
           placeholder={placeHolder}
           {...otherProps}
-        />
+        /> */}
+        <Right
+          style={{
+            backgroundColor: 'red',
+            flex: 1,
+          }}>
+          <Text>Test</Text>
+        </Right>
       </View>
     </View>
   );

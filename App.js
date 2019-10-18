@@ -15,7 +15,8 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-
+import {ApolloProvider} from 'react-apollo';
+import client from 'services';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {
@@ -50,16 +51,18 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <PaperProvider>
-          <Provider store={store}>
-            <PersistGate persistor={persistor}>
-              <StatusBar barStyle="dark-content" />
-              <SafeAreaView style={styles.safeAreaView}>
-                <NavigationApp />
-              </SafeAreaView>
-            </PersistGate>
-          </Provider>
-        </PaperProvider>
+        <ApolloProvider client={client}>
+          <PaperProvider>
+            <Provider store={store}>
+              <PersistGate persistor={persistor}>
+                <StatusBar barStyle="dark-content" />
+                <SafeAreaView style={styles.safeAreaView}>
+                  <NavigationApp />
+                </SafeAreaView>
+              </PersistGate>
+            </Provider>
+          </PaperProvider>
+        </ApolloProvider>
       </>
     );
   }

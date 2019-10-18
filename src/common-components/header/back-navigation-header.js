@@ -40,7 +40,7 @@ export const BackNavigationHeader = (props: THeaderProps) => {
             <MaterialIcon
               name="keyboard-arrow-left"
               size={size}
-              color={Colors.ultramarineBlue}
+              color={Colors.red}
               style={iconStyle}
             />
           }

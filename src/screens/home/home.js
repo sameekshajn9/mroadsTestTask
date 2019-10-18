@@ -67,10 +67,10 @@ function Item({title}) {
   );
 }
 export default class HomeScreen extends React.PureComponent<any, any> {
-  //   componentDidMount() {
-  //     const {getServices} = this.props;
-  //     getServices();
-  //   }
+  componentDidMount() {
+    const {getServices} = this.props;
+    getServices();
+  }
   render() {
     return (
       <View style={[styles.container, styles.horizontal]}>

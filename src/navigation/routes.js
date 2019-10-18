@@ -5,6 +5,7 @@ import LoginScreen from 'screens/login';
 import InspirationScreen from 'screens/inspirations';
 import SavedServicesScreen from 'screens/saved-services';
 import SettingsScreen from 'screens/settings';
+import HomeScreen from 'screens/home';
 import SelectCityScreen from 'screens/select-city-screen';
 
 export const authRoutes = {
@@ -14,6 +15,7 @@ export const authRoutes = {
 export const mainRoutes = {
   Tab: BottomTabs,
   SelectCity: SelectCityScreen,
+  Home: HomeScreen,
   // Inspirations: InspirationScreen,
   // SavedServices: SavedServicesScreen,
   // Settings: SettingsScreen,

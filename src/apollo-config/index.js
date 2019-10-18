@@ -1,5 +1,7 @@
 /* eslint-disable no-console */
-import ApolloClient from 'apollo-client';
+import {ApolloClient} from 'apollo-client';
+// import ApolloClient from 'apollo-boost';
+
 import {onError} from 'apollo-link-error';
 import {setContext} from 'apollo-link-context';
 import {createHttpLink} from 'apollo-link-http';
@@ -62,6 +64,11 @@ const httpLink = createHttpLink({
   uri: config.togetherServer,
   // credentials: 'include',
 });
+
+// const client = new ApolloClient({
+//   uri: config.togetherServer,
+//   cache: new InMemoryCache(),
+// });
 
 const client = new ApolloClient({
   // uri: 'http://192.168.1.18:3000/graphql',

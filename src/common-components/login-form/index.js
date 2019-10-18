@@ -15,6 +15,7 @@ const TextInputForm = props => {
     containerStyle,
     fields,
     onHandleChange,
+    showButton = true,
   } = props;
   const fieldKeys = Object.keys(fields);
   return (
@@ -34,11 +35,13 @@ const TextInputForm = props => {
             onChangeText={userInput => onHandleChange(fieldKey, userInput)}
           />
         ))}
-      <TouchableOpacity
-        style={[styles.loginButton, loginButtonStyle]}
-        onPress={onPressContinue}>
-        <Icon name="chevron-right" size={20} color="black" />
-      </TouchableOpacity>
+      {showButton && (
+        <TouchableOpacity
+          style={[styles.loginButton, loginButtonStyle]}
+          onPress={onPressContinue}>
+          <Icon name="chevron-right" size={20} color="black" />
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

@@ -1,13 +1,13 @@
 // @flow
 import gql from 'graphql-tag';
-import client from 'apollo';
+import client from 'services';
 import {toPromise, catchError} from 'utils';
 
 console.log(client, 'd');
 
 const getAllServicesQuery = gql`
   query getAllServices {
-    getAllServices {
+    response: getAllServices {
       type
       count
       status
@@ -18,11 +18,13 @@ const getAllServicesQuery = gql`
 
 export const getAllServices = () =>
   toPromise((resolve, reject) => {
+    console.log(client, 'client');
     client
       .query({
         query: getAllServicesQuery,
-        variables: {},
+        fetchPolicy: 'no-cache',
+        // variables: {},
       })
       .then(data => console.log(data, 'aata'))
-      .catch(reject);
+      .catch(data => console.log(data, 'asdaaaa'));
   });

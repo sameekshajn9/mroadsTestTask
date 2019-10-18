@@ -1,6 +1,6 @@
 // @flow
 import gql from 'graphql-tag';
-import client from 'apollo';
+import client from 'services';
 import {toPromise, catchError} from 'utils';
 
 // Create user

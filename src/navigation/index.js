@@ -21,7 +21,7 @@ const AuthStack = createStackNavigator(authRoutes, {
 
 const MainStack = createStackNavigator(mainRoutes, {
   headerMode: 'none',
-  initialRouteName: 'Tab',
+  initialRouteName: 'Home',
 });
 
 const AppNavigator = createSwitchNavigator(
@@ -32,7 +32,7 @@ const AppNavigator = createSwitchNavigator(
   },
   {
     headerMode: 'none',
-    initialRouteName: 'Auth',
+    initialRouteName: 'Main',
   },
 );
 
