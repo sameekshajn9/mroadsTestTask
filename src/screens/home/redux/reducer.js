@@ -1,11 +1,11 @@
 // Initial State
-import {GET_ALL_SERVICES} from 'appstore/actions';
+import {GET_ALL_SERVICES, GET_ALL_AVAILABLE_CITIES} from 'appstore/actions';
 
-const initialState = [];
-const serviceTypeReducer = (state = initialState, action) => {
+const initialServiceState = [];
+export const serviceTypeReducer = (state = initialServiceState, action) => {
   switch (action.type) {
-    case 'GET_ALL_SERVICES_SUCCESS': {
-      console.log(action.payload, 'datat');
+    case GET_ALL_SERVICES.SUCCESS: {
+      console.log(action.payload, 'GET_ALL_SERVICES');
       return {
         ...state,
         ...action.payload,
@@ -16,5 +16,22 @@ const serviceTypeReducer = (state = initialState, action) => {
     }
   }
 };
-// Exports
-export default serviceTypeReducer;
+
+const initialCitiesServiceState = [];
+export const availableCityReducer = (
+  state = initialCitiesServiceState,
+  action,
+) => {
+  switch (action.type) {
+    case GET_ALL_AVAILABLE_CITIES.SUCCESS: {
+      console.log(action.payload, 'GET_ALL_AVAILABLE_CITIES');
+      return {
+        ...state,
+        ...action.payload,
+      };
+    }
+    default: {
+      return state;
+    }
+  }
+};

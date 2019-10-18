@@ -8,7 +8,7 @@ const initialState = {
 };
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case HANDLE_SIGNIN: {
+    case HANDLE_SIGNIN.SUCCESS: {
       return {
         ...state,
         ...action.payload,

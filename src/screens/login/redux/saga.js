@@ -18,5 +18,5 @@ function* addUser({payload}) {
 }
 
 export function* watchAddUser(): any {
-  yield takeLatest(HANDLE_SIGNIN, addUser);
+  yield takeLatest(HANDLE_SIGNIN.REQUEST, addUser);
 }
