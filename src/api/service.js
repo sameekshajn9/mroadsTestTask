@@ -25,6 +25,6 @@ export const getAllServices = () =>
         fetchPolicy: 'no-cache',
         // variables: {},
       })
-      .then(data => console.log(data, 'aata'))
-      .catch(data => console.log(data, 'asdaaaa'));
+      .then(catchError(resolve, reject))
+      .catch(reject);
   });

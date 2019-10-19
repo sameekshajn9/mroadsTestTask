@@ -8,6 +8,7 @@ export const getServicesSuccess = () => ({
 export const getAvailableCities = () => ({
   type: GET_ALL_AVAILABLE_CITIES.REQUEST,
 });
-export const getAvailableCitiesSuccess = () => ({
+export const getAvailableCitiesSuccess = response => ({
   type: GET_ALL_AVAILABLE_CITIES.SUCCESS,
+  payload: response,
 });

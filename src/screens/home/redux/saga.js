@@ -27,7 +27,7 @@ function* getAvailableCities() {
     const result = yield call(getAllAvailableCities);
     // yield put(NavigationActions.navigate('Location'));
     console.log(result, 'result');
-    yield put(getAvailableCitiesSuccess(result));
+    yield put(getAvailableCitiesSuccess(result.cities));
   } catch (exception) {
     console.log(exception, 'exceptionasasa');
   }

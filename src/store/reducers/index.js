@@ -1,14 +1,12 @@
 import userReducer from 'screens/login/redux/reducer';
-import {
-  serviceTypeReducer,
-  availableCityReducer,
-} from 'screens/home/redux/reducer';
+import availableCitiesReducer from 'screens/home/redux/reducers/cities-reducer';
+import serviceTypesReducer from 'screens/home/redux/reducers/service-type-reducer';
 import {navReducer} from '../../navigation';
 import {combineReducers} from 'redux';
 
 export default combineReducers({
   userDetails: userReducer,
-  serviceTypes: serviceTypeReducer,
-  availableCities: availableCityReducer,
+  serviceTypes: serviceTypesReducer,
+  availableCities: availableCitiesReducer,
   nav: navReducer,
 });

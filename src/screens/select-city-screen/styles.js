@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
   },
   currentLocation: {
     marginHorizontal: 20,
-    marginTop: getHeight(12),
+    marginTop: getHeight(15),
     backgroundColor: Colors.white,
     flexDirection: 'row',
   },

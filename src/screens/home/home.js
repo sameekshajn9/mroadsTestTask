@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Text,
   FlatList,
+  TouchableOpacity,
 } from 'react-native';
 
 const DATA = [
@@ -47,25 +48,24 @@ const DATA = [
   //     title: 'Third Item',
   //   },
 ];
-function Item({title}) {
-  return (
-    <View
-      style={[
-        styles.item,
-        {
-          // backgroundColor: 'red',
-          marginTop: 10,
-          marginHorizontal: 1,
-          borderBottomColor: 'black',
-          borderBottomWidth: 10,
-          // flex: 1,
-          // flexDirection: 'row',
-        },
-      ]}>
-      <Text style={styles.title}>{title}</Text>
-    </View>
-  );
-}
+const Item = ({title}) => (
+  <View
+    style={[
+      styles.item,
+      {
+        // backgroundColor: 'red',
+        marginTop: 10,
+        marginHorizontal: 1,
+        borderBottomColor: 'black',
+        borderBottomWidth: 10,
+        // flex: 1,
+        // flexDirection: 'row',
+      },
+    ]}>
+    <Text style={styles.title}>{title}</Text>
+  </View>
+);
+
 export default class HomeScreen extends React.PureComponent<any, any> {
   componentDidMount() {
     const {getServices, getCities} = this.props;
@@ -73,6 +73,7 @@ export default class HomeScreen extends React.PureComponent<any, any> {
     getCities();
   }
   render() {
+    const {logout} = this.props;
     return (
       <View style={[styles.container, styles.horizontal]}>
         {/* <Text>Home</Text> */}
@@ -89,6 +90,38 @@ export default class HomeScreen extends React.PureComponent<any, any> {
           renderItem={({item}) => <Item title={item.title} />}
           keyExtractor={item => item.id}
         />
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate('SelectCity')}
+          style={[
+            styles.item,
+            {
+              // backgroundColor: 'red',
+              marginTop: 10,
+              marginHorizontal: 1,
+              borderBottomColor: 'black',
+              borderBottomWidth: 10,
+              // flex: 1,
+              // flexDirection: 'row',
+            },
+          ]}>
+          <Text style={styles.title}>{'Location'}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={logout}
+          style={[
+            styles.item,
+            {
+              // backgroundColor: 'red',
+              marginTop: 10,
+              marginHorizontal: 1,
+              borderBottomColor: 'black',
+              borderBottomWidth: 10,
+              // flex: 1,
+              // flexDirection: 'row',
+            },
+          ]}>
+          <Text style={styles.title}>{'Logout'}</Text>
+        </TouchableOpacity>
       </View>
     );
   }
