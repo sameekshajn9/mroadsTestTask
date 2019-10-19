@@ -25,7 +25,6 @@ export default class LoginScreen extends Component {
   };
 
   sendOtp = () => {
-    console.log(this.state.contact);
     this.setState({
       isOptSent: true,
     });

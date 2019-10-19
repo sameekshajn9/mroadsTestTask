@@ -9,11 +9,9 @@ import {getAllServices, getAllAvailableCities} from '../../../api';
 function* getTypes() {
   try {
     const result = yield call(getAllServices);
-    // yield put(NavigationActions.navigate('Location'));
-    console.log(result, 'result');
     yield put(getServicesSuccess(result));
   } catch (exception) {
-    console.log(exception, 'exceptionasasa');
+    console.log(exception, 'exception');
   }
 }
 
@@ -23,13 +21,10 @@ export function* watchGetServiceTypes(): any {
 
 function* getAvailableCities() {
   try {
-    console.log('result');
     const result = yield call(getAllAvailableCities);
-    // yield put(NavigationActions.navigate('Location'));
-    console.log(result, 'result');
     yield put(getAvailableCitiesSuccess(result.cities));
   } catch (exception) {
-    console.log(exception, 'exceptionasasa');
+    console.log(exception, 'exception');
   }
 }
 

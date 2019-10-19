@@ -7,6 +7,7 @@ const getAllAvailableCitiesQuery = gql`
   query getAllAvailableCities {
     response: getAllAvailableCities {
       cities {
+        id
         name
         cityCode
       }
@@ -18,7 +19,6 @@ const getAllAvailableCitiesQuery = gql`
 
 export const getAllAvailableCities = () =>
   toPromise((resolve, reject) => {
-    console.log(client, 'client');
     client
       .query({
         query: getAllAvailableCitiesQuery,

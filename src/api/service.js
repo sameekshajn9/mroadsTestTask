@@ -3,8 +3,6 @@ import gql from 'graphql-tag';
 import client from 'services';
 import {toPromise, catchError} from 'utils';
 
-console.log(client, 'd');
-
 const getAllServicesQuery = gql`
   query getAllServices {
     response: getAllServices {
@@ -18,7 +16,6 @@ const getAllServicesQuery = gql`
 
 export const getAllServices = () =>
   toPromise((resolve, reject) => {
-    console.log(client, 'client');
     client
       .query({
         query: getAllServicesQuery,

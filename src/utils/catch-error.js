@@ -14,7 +14,7 @@ export const catchError = (onSuccess: Function, onError: Function) => (
     if (status === 200 || status === 304) {
       onSuccess(data.response);
     } else {
-      console.log('reooe', onError);
+      console.log('onError', onError);
       let message = status === 401 ? 'Unauthorised Request' : 'Unknown Error';
       // Logout user now if status is 401
       // if (status === 401) {

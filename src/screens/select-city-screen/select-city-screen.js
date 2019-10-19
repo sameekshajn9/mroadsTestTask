@@ -11,11 +11,10 @@ export default class SelectCityScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cityName: 'fwef',
+      cityName: '',
     };
   }
   render() {
-    console.log(this.props, 'this.props');
     const {cityName} = this.state;
     const {navigation, availableCities} = this.props;
     return (
@@ -49,7 +48,11 @@ export default class SelectCityScreen extends Component {
           {availableCities &&
             availableCities.length > 0 &&
             availableCities.map(city => (
-              <Picker.Item label={city.name} value={city.cityCode} />
+              <Picker.Item
+                key={city.id}
+                label={city.name}
+                value={city.cityCode}
+              />
             ))}
         </Picker>
       </View>

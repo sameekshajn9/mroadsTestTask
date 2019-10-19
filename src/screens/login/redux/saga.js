@@ -6,12 +6,9 @@ import {HANDLE_SIGNIN, signIn} from 'appstore/actions';
 import {createUser} from '../../../api';
 
 function* addUser({payload}) {
-  console.log('payload', payload);
   try {
     const result = yield call(createUser, payload);
-    // yield put(NavigationActions.navigate('Location'));
     yield put(signIn(result));
-    console.log(result, 'result');
   } catch (exception) {
     console.log(exception, 'exception');
   }
