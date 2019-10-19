@@ -2,7 +2,7 @@
 import React from 'react';
 import {TouchableOpacity, Text} from 'react-native';
 import {getHeight} from 'utils';
-import {Colors, Fonts, FontSize} from '../../theme';
+import {Colors, Fonts, FontSize} from 'shared/theme';
 
 type TLinkButtonProps = {
   style: any,

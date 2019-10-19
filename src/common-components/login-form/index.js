@@ -10,11 +10,13 @@ const TextInputForm = props => {
     onPressContinue,
     detailsTextInputStyle,
     textInputStyle,
+    children,
     labelStyle,
     loginButtonStyle,
     containerStyle,
     fields,
     onHandleChange,
+    isFloatingTextInput = true,
     showButton = true,
   } = props;
   const fieldKeys = Object.keys(fields);
@@ -23,8 +25,9 @@ const TextInputForm = props => {
       {fieldKeys &&
         fieldKeys.map(fieldKey => (
           <FloatingLabelTextInput
+            children={children}
             key={fields[fieldKey].label}
-            isFloatingTextInput
+            isFloatingTextInput={isFloatingTextInput}
             password={false}
             style={[styles.detailsTextInput, detailsTextInputStyle]}
             textInputStyle={textInputStyle}

@@ -9,6 +9,8 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
+import SearchField from '../../common-components/search-field';
+
 import {TouchableText} from '../../common-components/touchable-text';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import {Colors} from 'shared/theme';
@@ -70,12 +72,27 @@ const Item = ({title}) => (
 );
 
 export default class HomeScreen extends React.PureComponent<any, any> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      search: '',
+    };
+  }
+
   componentDidMount() {
     const {getServices, getCities} = this.props;
     getServices();
     getCities();
   }
+
+  onHandleChange = (key, value) => {
+    this.setState({
+      [key]: value,
+    });
+  };
+
   render() {
+    const {search} = this.state;
     const {logout, navigation} = this.props;
     return (
       <View style={styles.wrapper}>
@@ -91,8 +108,16 @@ export default class HomeScreen extends React.PureComponent<any, any> {
           }
           containerStyle={styles.containerStyle}
         />
+        <SearchField
+          clearSearchData={'clearSearch'}
+          searchText={'searchText'}
+          handleSearchCallback={() => {}}
+          onHandleChange={this.onHandleChange}
+          search={search}
+        />
+
         {/* <Text>Home</Text> */}
-        <FlatList
+        {/* <FlatList
           style={{
             flex: 1,
             flexDirection: 'row',
@@ -120,7 +145,7 @@ export default class HomeScreen extends React.PureComponent<any, any> {
             },
           ]}>
           <Text style={styles.title}>{'Logout'}</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     );
   }

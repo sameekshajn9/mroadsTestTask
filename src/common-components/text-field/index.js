@@ -13,6 +13,7 @@ export const FloatingLabelTextInput = props => {
     label,
     value,
     onChangeText,
+    children,
     handleBlur,
     handleFocus,
     isFloatingTextInput,
@@ -35,7 +36,7 @@ export const FloatingLabelTextInput = props => {
       <View>
         {isFocused && <Text style={[styles.label, labelStyle]}>{label}</Text>}
         <Left>{left}</Left>
-        {/* <TextInput
+        <TextInput
           style={[styles.textInput, textInputStyle]}
           secureTextEntry={password}
           value={value}
@@ -43,15 +44,16 @@ export const FloatingLabelTextInput = props => {
           onFocus={focus}
           onBlur={blur}
           placeholder={placeHolder}
-          {...otherProps}
-        /> */}
-        <Right
+          {...otherProps}>
+          {children}
+        </TextInput>
+        {/* <Right
           style={{
             backgroundColor: 'red',
             flex: 1,
           }}>
           <Text>Test</Text>
-        </Right>
+        </Right> */}
       </View>
     </View>
   );
@@ -73,14 +75,14 @@ const styles = StyleSheet.create({
     color: Colors.black,
     borderBottomWidth: 1,
     borderRadius: getHeight(6.7),
-    borderBottomColor: Colors.ultramarineBlue,
+    borderBottomColor: Colors.transparent,
     // fontFamily: Fonts.TTNormsRegular,
     padding: 10,
     paddingLeft: 0,
     // backgroundColor: 'red',
   },
   Wrapper: {
-    height: getHeight(59.96),
+    // height: getHeight(59.96),
     width: getWidth(277),
     paddingTop: 10,
     marginTop: 10,
