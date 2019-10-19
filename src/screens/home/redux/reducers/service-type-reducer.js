@@ -6,10 +6,7 @@ const initialState = [];
 const serviceTypesReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_SERVICES.SUCCESS: {
-      return {
-        ...state,
-        ...action.payload,
-      };
+      return action.payload;
     }
     default: {
       return state;

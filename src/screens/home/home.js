@@ -69,7 +69,7 @@ const Item = ({title}) => (
 export default class HomeScreen extends React.PureComponent<any, any> {
   componentDidMount() {
     const {getServices, getCities} = this.props;
-    // getServices();
+    getServices();
     getCities();
   }
   render() {

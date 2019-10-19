@@ -4,12 +4,12 @@ import {takeLatest, call, put} from 'redux-saga/effects';
 // import {NavigationActions} from 'react-navigation';
 import {GET_ALL_SERVICES, GET_ALL_AVAILABLE_CITIES} from 'appstore/actions';
 import {getServicesSuccess, getAvailableCitiesSuccess} from './action';
-import {getAllServices, getAllAvailableCities} from '../../../api';
+import {getAllServicesTypes, getAllAvailableCities} from '../../../api';
 
 function* getTypes() {
   try {
-    const result = yield call(getAllServices);
-    yield put(getServicesSuccess(result));
+    const result = yield call(getAllServicesTypes);
+    yield put(getServicesSuccess(result.types));
   } catch (exception) {
     console.log(exception, 'exception');
   }
