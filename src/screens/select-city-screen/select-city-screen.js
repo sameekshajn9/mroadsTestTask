@@ -6,6 +6,7 @@ import {Left, Body} from 'native-base';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import {styles} from './styles';
 import {Colors} from 'shared/theme';
+import {TouchableText} from '../../common-components/touchable-text';
 
 export default class SelectCityScreen extends Component {
   constructor(props) {
@@ -28,14 +29,18 @@ export default class SelectCityScreen extends Component {
           body={<Text style={styles.bodyTextStyle}>Select City</Text>}
         />
 
-        <TouchableOpacity style={styles.currentLocation}>
-          <Left style={styles.gpsLeftStyle}>
+        <TouchableText
+          onHandlePress={() => navigation.navigate('SelectCity')}
+          text="Use Current Location"
+          leftIcon={
             <MaterialIcon name="gps-fixed" size={22} color={Colors.red} />
-          </Left>
-          <Body style={styles.gpsBodyStyle}>
-            <Text style={styles.gpsBodyTextStyle}>Use Current Location</Text>
-          </Body>
-        </TouchableOpacity>
+          }
+          leftStyle={styles.gpsLeftStyle}
+          bodyStyle={styles.gpsBodyStyle}
+          touchableTextStyle={styles.touchableTextStyle}
+          containerStyle={styles.currentLocation}
+          touchableViewStyle={styles.touchableViewStyle}
+        />
         <View style={styles.availabilityView}>
           <Text style={styles.availabilityViewText}>
             Currently Available in

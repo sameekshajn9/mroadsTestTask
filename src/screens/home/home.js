@@ -9,6 +9,9 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
+import {TouchableText} from '../../common-components/touchable-text';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import {Colors} from 'shared/theme';
 
 const DATA = [
   {
@@ -73,9 +76,20 @@ export default class HomeScreen extends React.PureComponent<any, any> {
     getCities();
   }
   render() {
-    const {logout} = this.props;
+    const {logout, navigation} = this.props;
     return (
-      <View style={[styles.container, styles.horizontal]}>
+      <View style={styles.container}>
+        <TouchableText
+          onHandlePress={() => navigation.navigate('SelectCity')}
+          text="Location"
+          children={
+            <MaterialIcon
+              name="arrow-drop-down"
+              size={30}
+              color={Colors.black}
+            />
+          }
+        />
         {/* <Text>Home</Text> */}
         <FlatList
           style={{
@@ -90,22 +104,6 @@ export default class HomeScreen extends React.PureComponent<any, any> {
           renderItem={({item}) => <Item title={item.title} />}
           keyExtractor={item => item.id}
         />
-        <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('SelectCity')}
-          style={[
-            styles.item,
-            {
-              // backgroundColor: 'red',
-              marginTop: 10,
-              marginHorizontal: 1,
-              borderBottomColor: 'black',
-              borderBottomWidth: 10,
-              // flex: 1,
-              // flexDirection: 'row',
-            },
-          ]}>
-          <Text style={styles.title}>{'Location'}</Text>
-        </TouchableOpacity>
         <TouchableOpacity
           onPress={logout}
           style={[

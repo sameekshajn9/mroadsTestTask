@@ -14,19 +14,18 @@ export const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginTop: getHeight(15),
     backgroundColor: Colors.white,
-    flexDirection: 'row',
   },
   gpsLeftStyle: {
     flex: 0,
   },
   gpsBodyStyle: {
-    // flex: ,
-    alignItems: 'flex-start',
+    flexDirection: 'row',
     marginHorizontal: 20,
   },
 
-  gpsBodyTextStyle: {
+  touchableTextStyle: {
     fontSize: 15,
+    flex: 1,
     fontWeight: '300',
   },
   availabilityView: {
@@ -46,6 +45,9 @@ export const styles = StyleSheet.create({
   pickerStyle: {
     width: '100%',
     flex: 1,
+  },
+  touchableViewStyle: {
+    width: getWidth(150),
   },
   // picker,
 });
