@@ -80,7 +80,7 @@ export const Metrics = {
   },
   marginHorizontal: 10,
   marginVertical: 10,
-  navBarHeight: Platform.OS === 'ios' ? 64 : 54,
+  navBarHeight: Platform.OS === 'ios' ? 35 : 54,
   searchBarHeight: 64,
   tabBarHeight: 50,
   rowHeight: 75,

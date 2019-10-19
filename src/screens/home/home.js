@@ -78,7 +78,7 @@ export default class HomeScreen extends React.PureComponent<any, any> {
   render() {
     const {logout, navigation} = this.props;
     return (
-      <View style={styles.container}>
+      <View style={styles.wrapper}>
         <TouchableText
           onHandlePress={() => navigation.navigate('SelectCity')}
           text="Location"
@@ -89,6 +89,7 @@ export default class HomeScreen extends React.PureComponent<any, any> {
               color={Colors.black}
             />
           }
+          containerStyle={styles.containerStyle}
         />
         {/* <Text>Home</Text> */}
         <FlatList
