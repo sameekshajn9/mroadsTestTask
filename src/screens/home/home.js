@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import React, {createRef} from 'react';
 import styles from './styles';
 import {
   View,
@@ -15,68 +15,26 @@ import {TouchableText} from '../../common-components/touchable-text';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import {Colors} from 'shared/theme';
 
-const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'First Item',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Second Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
-  },
-  //   {
-  //     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-  //     title: 'First Item',
-  //   },
-  //   {
-  //     id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-  //     title: 'Second Item',
-  //   },
-  //   {
-  //     id: '58694a0f-3da1-471f-bd96-145571e29d72',
-  //     title: 'Third Item',
-  //   },
-  //   {
-  //     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-  //     title: 'First Item',
-  //   },
-  //   {
-  //     id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-  //     title: 'Second Item',
-  //   },
-  //   {
-  //     id: '58694a0f-3da1-471f-bd96-145571e29d72',
-  //     title: 'Third Item',
-  //   },
-];
-const Item = ({title}) => (
-  <View
-    style={[
-      styles.item,
-      {
-        // backgroundColor: 'red',
-        marginTop: 10,
-        marginHorizontal: 1,
-        borderBottomColor: 'black',
-        borderBottomWidth: 10,
-        // flex: 1,
-        // flexDirection: 'row',
-      },
-    ]}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
-
-export default class HomeScreen extends React.PureComponent<any, any> {
+export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       search: '',
+      indexType: 0,
+      selectedItem: '',
     };
+    this.flatList = createRef();
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    const {serviceTypes} = props;
+    const {selectedItem} = state;
+    if (!selectedItem) {
+      return {
+        ...state,
+        selectedItem: serviceTypes[0],
+      };
+    }
   }
 
   componentDidMount() {
@@ -91,9 +49,46 @@ export default class HomeScreen extends React.PureComponent<any, any> {
     });
   };
 
+  onPress = (item, index) => {
+    if (this.flatList) {
+      this.flatList.scrollToIndex({
+        animated: true,
+        index,
+      });
+      this.setState({
+        indexType: index,
+        selectedItem: item,
+      });
+    }
+  };
+
+  renderServiceType = (item, index) => {
+    const {indexType} = this.state;
+    return (
+      <TouchableOpacity
+        style={
+          index === indexType
+            ? styles.serviceFlatlistTouchSelected
+            : styles.serviceFlatlistTouch
+        }
+        onPress={() => this.onPress(item, index)}>
+        <Text
+          style={
+            indexType === index
+              ? styles.serviceTextSelected
+              : styles.serviceText
+          }>
+          {item.name}
+        </Text>
+      </TouchableOpacity>
+    );
+  };
+
   render() {
-    const {search} = this.state;
-    const {logout, navigation} = this.props;
+    const {search, selectedItem} = this.state;
+
+    const {logout, navigation, serviceTypes} = this.props;
+    const resultText = selectedItem.count === 1 ? 'Result' : 'Results';
     return (
       <View style={styles.wrapper}>
         <TouchableText
@@ -115,37 +110,28 @@ export default class HomeScreen extends React.PureComponent<any, any> {
           onHandleChange={this.onHandleChange}
           search={search}
         />
-
-        {/* <Text>Home</Text> */}
-        {/* <FlatList
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-            // backgroundColor: 'yellow',
-          }}
-          contentContainerStyle={{
-            flexDirection: 'row',
-          }}
-          data={DATA}
-          renderItem={({item}) => <Item title={item.title} />}
-          keyExtractor={item => item.id}
-        />
-        <TouchableOpacity
-          onPress={logout}
-          style={[
-            styles.item,
-            {
-              // backgroundColor: 'red',
-              marginTop: 10,
-              marginHorizontal: 1,
-              borderBottomColor: 'black',
-              borderBottomWidth: 10,
-              // flex: 1,
-              // flexDirection: 'row',
-            },
-          ]}>
-          <Text style={styles.title}>{'Logout'}</Text>
-        </TouchableOpacity> */}
+        <View style={styles.flatListView}>
+          <FlatList
+            ref={ref => (this.flatList = ref)}
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.serviceFlatlist}
+            data={serviceTypes}
+            listKey={(item2, index) =>
+              `D${(index.toString(), item2.toString())}`
+            }
+            horizontal
+            bounces={false}
+            renderItem={({item, index}) => this.renderServiceType(item, index)}
+          />
+        </View>
+        <View style={styles.resultView}>
+          <Text style={styles.resultViewText}>
+            {selectedItem.count} {resultText}
+          </Text>
+          <TouchableOpacity>
+            <MaterialIcon name="filter-list" size={20} color={Colors.black} />
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }

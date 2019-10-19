@@ -10,12 +10,10 @@ const deliveryAndDine = {
 };
 const isIOs = Platform.OS === 'ios';
 export default StyleSheet.create({
-  // for Search view
   searchView: {
     paddingHorizontal: getWidth(20),
-    // paddingVertical: 7,
+    marginTop: 3,
     flexDirection: 'row',
-    // justifyContent: 'space-between',
     borderBottomWidth: 2,
     borderBottomColor: Colors.lineGrey,
     alignItems: 'center',
