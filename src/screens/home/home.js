@@ -126,10 +126,10 @@ export default class HomeScreen extends React.Component {
         </View>
         <View style={styles.resultView}>
           <Text style={styles.resultViewText}>
-            {selectedItem.count} {resultText}
+            Showing {selectedItem.count} {resultText}
           </Text>
           <TouchableOpacity>
-            <MaterialIcon name="filter-list" size={20} color={Colors.black} />
+            <MaterialIcon name="filter-list" size={25} color={Colors.black} />
           </TouchableOpacity>
         </View>
       </View>

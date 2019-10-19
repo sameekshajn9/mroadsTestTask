@@ -53,9 +53,10 @@ export default StyleSheet.create({
   },
   resultView: {
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     flexDirection: 'row',
     marginHorizontal: 10,
+    marginVertical: 10,
   },
   resultViewText: {
     fontSize: FontSize.base,
