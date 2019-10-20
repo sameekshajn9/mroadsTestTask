@@ -41,9 +41,15 @@ export default class HomeScreen extends React.Component {
   }
 
   componentDidMount() {
-    const {getServices, getCities} = this.props;
-    getServices();
-    getCities();
+    const {getServiceTypes, getCities, getServices} = this.props;
+    const {selectedItem} = this.state;
+    console.log(this.state, 'this.state');
+    // getServiceTypes();
+    // getCities();
+    getServices({
+      serviceTypeId: selectedItem.id,
+      userId: 1,
+    });
   }
 
   onHandleChange = (key, value) => {

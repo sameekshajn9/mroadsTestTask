@@ -7,6 +7,7 @@ import {watchAddUser} from 'screens/login/redux/saga';
 import {
   watchGetServiceTypes,
   watchGetAvailableCities,
+  watchGetServices,
 } from 'screens/home/redux/saga';
 
 // Redux Saga: Root Saga
@@ -15,5 +16,6 @@ export function* rootSaga() {
     fork(watchAddUser),
     fork(watchGetServiceTypes),
     fork(watchGetAvailableCities),
+    fork(watchGetServices),
   ]);
 }

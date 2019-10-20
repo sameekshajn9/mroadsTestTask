@@ -6,7 +6,10 @@ const generateActionTypes = type => ({
 });
 
 export const HANDLE_SIGNIN = generateActionTypes('HANDLE_SIGNIN');
-export const GET_ALL_SERVICES = generateActionTypes('GET_ALL_SERVICES');
+export const GET_ALL_SERVICES_TYPES = generateActionTypes(
+  'GET_ALL_SERVICES_TYPES',
+);
+export const GET_SERVICES = generateActionTypes('GET_SERVICES');
 export const RESET_STORE = 'RESET_STORE';
 export const GET_ALL_AVAILABLE_CITIES = generateActionTypes(
   'GET_ALL_AVAILABLE_CITIES',
