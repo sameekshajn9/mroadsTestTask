@@ -5,6 +5,7 @@ import {Colors, FontSize} from 'shared/theme';
 export default StyleSheet.create({
   wrapper: {
     flex: 1,
+    backgroundColor: '#f7faf9',
   },
   containerStyle: {
     paddingVertical: 5,

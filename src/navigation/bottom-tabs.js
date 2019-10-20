@@ -53,11 +53,11 @@ const tabOptions = (tabScreen, iconName, iconTitle, backgroundColor) => {
 };
 
 const tabRoutesConfig = {
-  Order: tabOptions(HomeScreen, BagIcon, 'Home', 'red'),
-  Business: tabOptions(InspirationScreen, DiningIcon, 'Inspirations', 'yellow'),
+  Home: tabOptions(HomeScreen, BagIcon, '', 'red'),
+  Inspirations: tabOptions(InspirationScreen, DiningIcon, '', 'yellow'),
   // Redeem: tabOptions(LoginScreen, SearchIcon, 'VR'),
-  Settings: tabOptions(SavedServicesScreen, HeartIcon, 'Saved', 'pink'),
-  Menu: tabOptions(SettingsScreen, SettingsIcon, 'Settings', 'blue'),
+  Saved: tabOptions(SavedServicesScreen, HeartIcon, '', 'pink'),
+  Settings: tabOptions(SettingsScreen, SettingsIcon, '', 'blue'),
 };
 
 let bottomTabs = createMaterialBottomTabNavigator(tabRoutesConfig, {

@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Text,
   FlatList,
+  ScrollView,
   TouchableOpacity,
 } from 'react-native';
 import SearchField from '../../common-components/search-field';
@@ -14,6 +15,7 @@ import SearchField from '../../common-components/search-field';
 import {TouchableText} from '../../common-components/touchable-text';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import {Colors} from 'shared/theme';
+import ServiceCard from './components/service-card-view';
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
@@ -35,6 +37,7 @@ export default class HomeScreen extends React.Component {
         selectedItem: serviceTypes[0],
       };
     }
+    return state;
   }
 
   componentDidMount() {
@@ -88,7 +91,8 @@ export default class HomeScreen extends React.Component {
     const {search, selectedItem} = this.state;
 
     const {logout, navigation, serviceTypes} = this.props;
-    const resultText = selectedItem.count === 1 ? 'Result' : 'Results';
+    const resultText =
+      !!selectedItem && selectedItem.count === 1 ? 'Result' : 'Results';
     return (
       <View style={styles.wrapper}>
         <TouchableText
@@ -126,12 +130,17 @@ export default class HomeScreen extends React.Component {
         </View>
         <View style={styles.resultView}>
           <Text style={styles.resultViewText}>
-            Showing {selectedItem.count} {resultText}
+            Showing {!!selectedItem && selectedItem.count} {resultText}
           </Text>
           <TouchableOpacity>
             <MaterialIcon name="filter-list" size={25} color={Colors.black} />
           </TouchableOpacity>
         </View>
+        <ScrollView>
+          <ServiceCard />
+          <ServiceCard />
+          <ServiceCard />
+        </ScrollView>
       </View>
     );
   }
