@@ -6,7 +6,6 @@ const initialState = {};
 const servicesReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_SERVICES.SUCCESS: {
-      console.log(action.payload);
       const {serviceTypeId, data} = action.payload;
       const hasServiceData = state[serviceTypeId];
       if (!hasServiceData) {
@@ -14,9 +13,8 @@ const servicesReducer = (state = initialState, action) => {
       }
       return state;
     }
-    default: {
+    default:
       return state;
-    }
   }
 };
 

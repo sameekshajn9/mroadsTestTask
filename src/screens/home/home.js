@@ -43,7 +43,6 @@ export default class HomeScreen extends React.Component {
   componentDidMount() {
     const {getServiceTypes, getCities, getServices} = this.props;
     const {selectedItem} = this.state;
-    console.log(this.state, 'this.state');
     // getServiceTypes();
     // getCities();
     getServices({
@@ -93,10 +92,22 @@ export default class HomeScreen extends React.Component {
     );
   };
 
+  renderServiceCard = () => {
+    const {selectedItem} = this.state;
+    const {services} = this.props;
+    const selectedTypeServices = services[selectedItem.id];
+    console.log(selectedTypeServices, 'selectedTypeServices');
+    if (selectedTypeServices && selectedTypeServices.length > 0) {
+      return selectedTypeServices.map(service => (
+        <ServiceCard service={service} />
+      ));
+    }
+  };
+
   render() {
     const {search, selectedItem} = this.state;
 
-    const {logout, navigation, serviceTypes} = this.props;
+    const {logout, navigation, serviceTypes, services} = this.props;
     const resultText =
       !!selectedItem && selectedItem.count === 1 ? 'Result' : 'Results';
     return (
@@ -142,11 +153,7 @@ export default class HomeScreen extends React.Component {
             <MaterialIcon name="filter-list" size={25} color={Colors.black} />
           </TouchableOpacity>
         </View>
-        <ScrollView>
-          <ServiceCard />
-          <ServiceCard />
-          <ServiceCard />
-        </ScrollView>
+        <ScrollView>{this.renderServiceCard()}</ScrollView>
       </View>
     );
   }

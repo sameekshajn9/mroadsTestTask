@@ -19,11 +19,13 @@ import {Colors} from 'shared/theme';
 
 export default class ServiceCard extends React.Component {
   render() {
+    const {service} = this.props;
+    const {address} = service;
     return (
       <View style={styles.wrapper}>
         <View style={styles.container}>
           <View>
-            <Text style={styles.name}>One Way Cafe Banquet</Text>
+            <Text style={styles.name}>{service.name}</Text>
             <View style={styles.ratingView}>
               <MaterialIcon name="star" size={15} color={Colors.lightGrey} />
               <MaterialIcon name="star" size={15} color={Colors.lightGrey} />
@@ -42,7 +44,7 @@ export default class ServiceCard extends React.Component {
               <FontAwesomeIcon size={16} name="map-marker" />
 
               <Text style={styles.locationText}>
-                Shakespeare Sarani, Kolkata
+                {address.address_line_1}, {address.city}
               </Text>
             </View>
             <View style={styles.priceView}>

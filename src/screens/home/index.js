@@ -10,6 +10,7 @@ import {connect} from 'react-redux';
 
 const mapStateToProps = state => ({
   serviceTypes: state.serviceTypes,
+  services: state.services,
 });
 
 const mapDispatchToProps = dispatch => ({
