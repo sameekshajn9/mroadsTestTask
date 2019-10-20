@@ -51,6 +51,8 @@ export default StyleSheet.create({
   bottomStyle: {marginBottom: getHeight(25)},
   flatListView: {
     height: getHeight(50),
+    borderTopColor: 'lightgrey',
+    borderTopWidth: 1,
   },
   resultView: {
     alignItems: 'center',
