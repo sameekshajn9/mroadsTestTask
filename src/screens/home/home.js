@@ -96,12 +96,20 @@ export default class HomeScreen extends React.Component {
     const {selectedItem} = this.state;
     const {services} = this.props;
     const selectedTypeServices = services[selectedItem.id];
-    console.log(selectedTypeServices, 'selectedTypeServices');
     if (selectedTypeServices && selectedTypeServices.length > 0) {
-      return selectedTypeServices.map(service => (
-        <ServiceCard service={service} />
-      ));
+      return (
+        <ScrollView>
+          {selectedTypeServices.map(service => (
+            <ServiceCard service={service} />
+          ))}
+        </ScrollView>
+      );
     }
+    return (
+      <View style={styles.notFound}>
+        <Text style={styles.notFoundText}>No Service Found</Text>
+      </View>
+    );
   };
 
   render() {
@@ -153,7 +161,7 @@ export default class HomeScreen extends React.Component {
             <MaterialIcon name="filter-list" size={25} color={Colors.black} />
           </TouchableOpacity>
         </View>
-        <ScrollView>{this.renderServiceCard()}</ScrollView>
+        {this.renderServiceCard()}
       </View>
     );
   }

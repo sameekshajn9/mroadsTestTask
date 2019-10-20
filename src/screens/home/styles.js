@@ -67,4 +67,14 @@ export default StyleSheet.create({
     marginHorizontal: 4,
     color: Colors.lightGray,
   },
+  notFound: {
+    flex: 1,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  notFoundText: {
+    fontSize: 15,
+    color: Colors.lightGrey,
+  },
 });
