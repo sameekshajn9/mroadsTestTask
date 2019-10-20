@@ -75,6 +75,6 @@ export default StyleSheet.create({
   },
   notFoundText: {
     fontSize: 15,
-    color: Colors.lightGrey,
+    color: '#3e414d',
   },
 });
