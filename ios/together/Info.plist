@@ -71,6 +71,26 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+    <string>Roboto_medium.ttf</string>
+    <string>Roboto.ttf</string>
+    <string>rubicon-icon-font.ttf</string>
+    <string>TTNorms-Black.otf</string>
+    <string>TTNorms-Bold.otf</string>
+    <string>TTNorms-ExtraBold.otf</string>
+    <string>TTNorms-Heavy.otf</string>
+    <string>TTNorms-Light.otf</string>
+    <string>TTNorms-Medium.otf</string>
+    <string>TTNorms-Regular.otf</string>
+    <string>TTNorms-Thin.otf</string>
+    <string>TTNorms-ExtraLight.otf</string>
+    <string>TTNorms-MediumItalic.otf</string>
+    <string>Lato-Black.ttf</string>
+    <string>Lato-Bold.ttf</string>
+    <string>Lato-Heavy.ttf</string>
+    <string>Lato-Light.ttf</string>
+    <string>Lato-Medium.ttf</string>
+    <string>Lato-Regular.ttf</string>
+    <string>Lato-Semibold.ttf</string>
 	</array>
 </dict>
 </plist>

@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {getHeight} from 'utils';
-import {Colors, FontSize} from 'shared/theme';
+import {Colors, FontSize, Fonts} from 'shared/theme';
 
 export default StyleSheet.create({
   wrapper: {
@@ -19,14 +19,14 @@ export default StyleSheet.create({
   },
   serviceText: {
     color: Colors.gray,
-    // fontFamily: Fonts.LatoRegular,
+    fontFamily: Fonts.LatoRegular,
     fontSize: FontSize.mediumSmall,
     marginHorizontal: 20,
     textTransform: 'capitalize',
   },
   serviceTextSelected: {
     color: Colors.black,
-    // fontFamily: Fonts.LatoBold,
+    fontFamily: Fonts.latoBold,
     fontSize: FontSize.mediumSmall,
     textTransform: 'capitalize',
     marginHorizontal: 20,
