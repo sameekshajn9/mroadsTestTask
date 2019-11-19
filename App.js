@@ -16,53 +16,18 @@ import {
   StatusBar,
 } from 'react-native';
 import {ApolloProvider} from 'react-apollo';
-import client from 'services';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import appStore from './src/store';
-import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
-
-import NavigationApp from './src/navigation';
-import SplashScreen from 'react-native-splash-screen';
-
-const {store, persistor} = appStore();
-
-const theme = {
-  ...DefaultTheme,
-  roundness: 2,
-  colors: {
-    ...DefaultTheme.colors,
-    primary: '#3498db',
-    accent: '#f1c40f',
-  },
-};
+import {NavigationApp} from './src/navigation';
+import {store} from './src/store/store';
 
 class App extends React.Component {
-  componentDidMount() {
-    SplashScreen.hide();
-  }
   render() {
     return (
       <>
-        <ApolloProvider client={client}>
-          <PaperProvider>
-            <Provider store={store}>
-              <PersistGate persistor={persistor}>
-                <StatusBar barStyle="dark-content" />
-                <SafeAreaView style={styles.safeAreaView}>
-                  <NavigationApp />
-                </SafeAreaView>
-              </PersistGate>
-            </Provider>
-          </PaperProvider>
-        </ApolloProvider>
+        <Provider store={store}>
+          <NavigationApp />
+        </Provider>
       </>
     );
   }
